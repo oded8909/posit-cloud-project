@@ -1,0 +1,5 @@
+CHROME_DRIVER_PATH = "D:\\positcloud\\drivers\\chromedriver.exe"
+USERNAME = "oded8909@hotmail.com"
+PASSWORD = "PositTest1357"
+SPACENAME = "My Test Space 1"
+PROJECTNAME = "My Test Project 1"
