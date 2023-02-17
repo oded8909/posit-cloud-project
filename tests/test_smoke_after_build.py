@@ -15,11 +15,6 @@ def setup():
     # Delete the created space and verify space was deleted
     if pytest.user_login.driver.find_element(By.XPATH, "//div[text()='" + variables.SPACENAME + "']/..").is_displayed():
         pytest.user_landing_page.delete_space(pytest.user_login.driver, variables.SPACENAME)
-        #try:
-       #WebDriverWait(pytest.user_login.driver, 2).until(EC.presence_of_element_located((By.XPATH, "//div[text()='" + variables.SPACENAME + "']/..")))
-       # except:
-        #    pass
-
     
     # Logout and close browser
     pytest.user_landing_page.logout(pytest.user_login.driver)
