@@ -2,7 +2,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-import time
+from selenium.webdriver.common.keys import Keys
+import time, variables
 
 
 
@@ -21,7 +22,7 @@ class LandingPage(object):
         self.name.clear()
         self.name.send_keys(space_name)
         driver.find_element(By.CSS_SELECTOR, 'button[type="submit"]').click()
-        create_button = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, "/html/body/div/div/div/div[3]/div[1]/div[3]/div[1]/div[2]/a[2]")))
+        create_button = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, variables.CREATE_BTN)))
         create_button.click()
         driver.refresh()
     
@@ -67,6 +68,17 @@ class LandingPage(object):
         action.move_to_element(project_name_element)
         action.click()
         action.send_keys(project_name)
+        action.send_keys(Keys.ENTER)
         action.perform()
-        driver.implicitly_wait(2)
+        driver.implicitly_wait(3)
+
+    def logout(self, driver):
+        """
+        Logout from the system
+
+        """
+        driver.find_element(By.ID, 'currentUser').click()
+        driver.find_element(By.CSS_SELECTOR, 'a[class="menuItem logout"]').click()
+        WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, 'main')))
+
 
